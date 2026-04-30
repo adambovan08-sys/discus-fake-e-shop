@@ -313,7 +313,7 @@
       cartTotal.textContent = `Spolu: ${total} €`;
     }
 
-    document.getElementById('orderForm').addEventListener('submit', function(event) {
+    document.getElementById('orderForm').addEventListener('submit', async function(event) {
       event.preventDefault();
 
       if (cart.length === 0) {
@@ -326,27 +326,39 @@
       const address = document.getElementById('address').value;
       const note = document.getElementById('note').value;
       const total = cart.reduce((sum, item) => sum + item.price, 0);
-      const orderId = 'PD-' + Math.floor(Math.random() * 100000);
+      const products = cart.map(item => item.name).join(', ');
 
       const order = {
-        orderId,
-        name,
-        email,
-        address,
-        note,
-        products: cart.map(item => item.name),
-        total,
-        status: 'New'
+        name: name,
+        email: email,
+        address: address,
+        note: note,
+        product: products,
+        price: total
       };
 
-      console.log('Demo objednávka:', order);
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycby2Rweg_ZvgWvOwfa1YKZkbfYL0A4uJdz153NKjNmE69Rvgpu_GveGMsSXFF9zNAm-W/exec';
 
-      document.getElementById('successMessage').style.display = 'block';
-      document.getElementById('successMessage').innerHTML = `Objednávka bola vytvorená!<br>Číslo objednávky: ${orderId}<br>Celková suma: ${total} €<br>Demo dáta sú uložené v konzole prehliadača.`;
+      try {
+        const response = await fetch(scriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(order)
+        });
 
-      this.reset();
-      cart.length = 0;
-      renderCart();
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('successMessage').innerHTML = `Objednávka bola odoslaná!<br>Skontroluj Google Sheets tabuľku.`;
+
+        this.reset();
+        cart.length = 0;
+        renderCart();
+      } catch (error) {
+        console.error('Chyba pri odosielaní objednávky:', error);
+        alert('Objednávku sa nepodarilo odoslať. Skontroluj nastavenia Google Apps Script.');
+      }
     });
   </script>
 </body>
