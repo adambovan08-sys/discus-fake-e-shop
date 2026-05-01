@@ -1048,45 +1048,81 @@
     const cart = [];
     let isSubmitting = false;
 
-    const defaultStock = {
-      competition: [
-        { size: '1.75 kg', qty: 6 },
-        { size: '2.00 kg', qty: 4 },
-        { size: '1.50 kg', qty: 0 }
-      ],
-      training: [
-        { size: '1.00 kg', qty: 9 },
-        { size: '1.50 kg', qty: 3 },
-        { size: '2.00 kg', qty: 2 }
-      ],
-      shirt: [
-        { size: 'S', qty: 5 },
-        { size: 'M', qty: 8 },
-        { size: 'L', qty: 4 },
-        { size: 'XL', qty: 1 }
-      ]
-    };
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycby2Rweg_ZvgWvOwfa1YKZkbfYL0A4uJdz153NKjNmE69Rvgpu_GveGMsSXFF9zNAm-W/exec';
 
-    const defaultReviews = [
-      {
-        name: 'Martin Kováč',
-        role: 'Diskár, U23 atlét',
-        rating: 5,
-        text: 'Competition Disc Pro má výborný grip a stabilný let. Používam ho hlavne na technické tréningy a súťažnú prípravu.'
-      },
-      {
-        name: 'Lucia Novotná',
-        role: 'Atletická trénerka',
-        rating: 5,
-        text: 'Objednávka prišla rýchlo a komunikácia bola profesionálna. Training Disc Basic je super pre mladších atlétov.'
-      },
-      {
-        name: 'Tomáš Hrivnák',
-        role: 'Klubový atlét',
-        rating: 4,
-        text: 'Tričko sedí dobre, materiál je ľahký a príjemný na tréning. Určite by som objednal znova.'
-      }
-    ];
+let liveInventory = [];
+let liveReviews = [];
+
+async function loadStoreData() {
+  try {
+    const response = await fetch(scriptUrl);
+    const data = await response.json();
+
+    liveInventory = data.inventory || [];
+    liveReviews = data.reviews || [];
+
+    renderStock();
+    renderReviews();
+  } catch (error) {
+    console.error('Chyba pri načítaní dát:', error);
+  }
+}
+
+function renderStock() {
+  renderProductStock('Competition Disc Pro', 'stock-competition');
+  renderProductStock('Training Disc Basic', 'stock-training');
+  renderProductStock('ThrowMaster Shirt', 'stock-shirt');
+}
+
+function renderProductStock(productName, elementId) {
+  const container = document.getElementById(elementId);
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  const productItems = liveInventory.filter(item => item.product === productName);
+
+  productItems.forEach(item => {
+    const pill = document.createElement('span');
+    pill.className = 'size-pill';
+
+    const qty = Number(item.quantity);
+
+    if (qty === 0) pill.classList.add('out');
+    else if (qty <= 2) pill.classList.add('low');
+
+    pill.textContent = qty === 0
+      ? `${item.size} vypredané`
+      : `${item.size} · ${qty} ks`;
+
+    container.appendChild(pill);
+  });
+}
+
+function renderReviews() {
+  const grid = document.getElementById('reviewsGrid');
+  if (!grid) return;
+
+  grid.innerHTML = '';
+
+  liveReviews.forEach(review => {
+    const card = document.createElement('div');
+    card.className = 'review-card';
+
+    const stars =
+      '★'.repeat(Number(review.rating)) +
+      '☆'.repeat(5 - Number(review.rating));
+
+    card.innerHTML = `
+      <div class="stars">${stars}</div>
+      <p>“${review.review}”</p>
+      <strong>${review.name}</strong>
+      <span>${review.role}</span>
+    `;
+
+    grid.appendChild(card);
+  });
+}
 
     function renderStock() {
       renderStockGroup('stock-competition', defaultStock.competition);
