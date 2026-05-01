@@ -9,289 +9,780 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: #f4f6f8;
-      color: #1f2937;
+      background: #070b13;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(249, 115, 22, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(59, 130, 246, 0.14), transparent 28%),
+        radial-gradient(circle at 50% 90%, rgba(34, 197, 94, 0.08), transparent 28%);
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: 0.35;
+      z-index: -1;
+      pointer-events: none;
     }
 
     header {
-      background: #111827;
-      color: white;
-      padding: 22px 8%;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 11, 19, 0.78);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
     }
 
     .logo {
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+    }
+
+    .logo-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      box-shadow: 0 12px 30px rgba(249, 115, 22, 0.28);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     nav a {
-      color: white;
+      color: #cbd5e1;
       text-decoration: none;
-      margin-left: 22px;
-      font-weight: 600;
+      padding: 10px 13px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.25s;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.08);
+      color: white;
+    }
+
+    .cart-pill {
+      background: rgba(249, 115, 22, 0.16);
+      color: #fed7aa;
+      border: 1px solid rgba(249, 115, 22, 0.3);
     }
 
     .hero {
-      padding: 90px 8%;
-      background: linear-gradient(135deg, #111827, #374151);
-      color: white;
-      text-align: center;
+      min-height: 82vh;
+      padding: 100px 7% 70px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(249, 115, 22, 0.13);
+      color: #fed7aa;
+      border: 1px solid rgba(249, 115, 22, 0.25);
+      font-weight: 800;
+      margin-bottom: 22px;
+      animation: floatIn 0.7s ease both;
     }
 
     .hero h1 {
-      font-size: 52px;
-      margin-bottom: 18px;
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 0.92;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+      animation: floatIn 0.8s ease both;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #f97316, #facc15);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero p {
-      font-size: 21px;
-      margin-bottom: 30px;
-      color: #d1d5db;
+      max-width: 620px;
+      color: #cbd5e1;
+      font-size: 20px;
+      line-height: 1.7;
+      margin-bottom: 34px;
+      animation: floatIn 0.95s ease both;
     }
 
-    .hero button,
-    .product button,
-    .checkout button {
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: floatIn 1.05s ease both;
+    }
+
+    .btn {
       border: none;
-      background: #f97316;
-      color: white;
-      padding: 14px 24px;
-      border-radius: 10px;
-      font-size: 16px;
       cursor: pointer;
-      font-weight: bold;
+      border-radius: 999px;
+      padding: 15px 24px;
+      font-size: 15px;
+      font-weight: 900;
+      transition: 0.25s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .hero button:hover,
-    .product button:hover,
-    .checkout button:hover {
-      background: #ea580c;
+    .btn-primary {
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      color: white;
+      box-shadow: 0 18px 44px rgba(249, 115, 22, 0.32);
     }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 54px rgba(249, 115, 22, 0.42);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-3px);
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 34px;
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.055));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 30px 90px rgba(0,0,0,0.32);
+      overflow: hidden;
+      animation: heroCard 1s ease both;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: rgba(249, 115, 22, 0.25);
+      filter: blur(50px);
+      top: -90px;
+      right: -70px;
+    }
+
+    .disc-visual {
+      position: relative;
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+    }
+
+    .disc {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 50%, #111827 0 20%, #fb923c 21% 29%, #111827 30% 41%, #f97316 42% 58%, #fed7aa 59% 62%, #111827 63% 100%);
+      box-shadow: 0 0 0 18px rgba(255,255,255,0.04), 0 40px 80px rgba(249,115,22,0.24);
+      animation: spin 12s linear infinite;
+    }
+
+    .stat-card {
+      position: absolute;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(2, 6, 23, 0.72);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.24);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 24px;
+      color: white;
+    }
+
+    .stat-card span {
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .stat-one { top: 34px; left: 18px; }
+    .stat-two { bottom: 38px; right: 20px; }
 
     section {
-      padding: 70px 8%;
+      padding: 82px 7%;
+    }
+
+    .section-head {
+      max-width: 780px;
+      margin: 0 auto 42px;
+      text-align: center;
     }
 
     .section-title {
-      text-align: center;
-      font-size: 34px;
-      margin-bottom: 36px;
+      font-size: clamp(34px, 4vw, 54px);
+      letter-spacing: -1.8px;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      color: #94a3b8;
+      font-size: 18px;
+      line-height: 1.65;
     }
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
 
     .product {
-      background: white;
-      border-radius: 18px;
-      padding: 26px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-      text-align: center;
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      padding: 24px;
+      overflow: hidden;
+      transition: 0.28s;
+      box-shadow: 0 20px 55px rgba(0,0,0,0.22);
     }
 
-    .product-icon {
-      font-size: 54px;
-      margin-bottom: 18px;
+    .product:hover {
+      transform: translateY(-8px);
+      border-color: rgba(249,115,22,0.45);
+      box-shadow: 0 28px 70px rgba(249,115,22,0.13);
+    }
+
+    .product-image {
+      height: 210px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(249,115,22,0.45), transparent 34%),
+        linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035));
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 72px;
     }
 
     .product h3 {
-      font-size: 23px;
+      font-size: 24px;
       margin-bottom: 12px;
+      letter-spacing: -0.5px;
     }
 
     .product p {
-      color: #6b7280;
-      margin-bottom: 18px;
-      line-height: 1.5;
+      color: #a8b4c6;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .product-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
     }
 
     .price {
-      font-size: 26px;
-      font-weight: bold;
-      margin-bottom: 18px;
-      color: #111827;
+      font-size: 30px;
+      font-weight: 950;
+      color: #fed7aa;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .feature {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 24px;
+      padding: 22px;
+      color: #cbd5e1;
+    }
+
+    .feature strong {
+      display: block;
+      color: white;
+      font-size: 18px;
+      margin-bottom: 8px;
     }
 
     .cart-box,
-    .checkout {
-      max-width: 760px;
+    .checkout,
+    .support-card {
+      max-width: 920px;
       margin: auto;
-      background: white;
-      padding: 28px;
-      border-radius: 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 30px;
+      border-radius: 30px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.25);
     }
 
     .cart-item {
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 14px 0;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.09);
+      color: #dbeafe;
+    }
+
+    .cart-item button {
+      background: rgba(239,68,68,0.14);
+      color: #fecaca;
+      border: 1px solid rgba(239,68,68,0.3);
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
     }
 
     .cart-total {
-      font-size: 22px;
-      font-weight: bold;
+      font-size: 25px;
+      font-weight: 950;
       text-align: right;
-      margin-top: 18px;
+      margin-top: 20px;
+      color: white;
     }
 
     form {
       display: grid;
       gap: 15px;
-      margin-top: 20px;
+      margin-top: 24px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
     }
 
     input,
     textarea {
-      padding: 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
+      width: 100%;
+      padding: 16px 17px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      background: rgba(2,6,23,0.62);
+      color: white;
       font-size: 15px;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(249,115,22,0.75);
+      box-shadow: 0 0 0 4px rgba(249,115,22,0.13);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #64748b;
     }
 
     textarea {
-      min-height: 90px;
+      min-height: 100px;
       resize: vertical;
     }
 
     .success {
       display: none;
       margin-top: 18px;
-      padding: 16px;
-      border-radius: 12px;
-      background: #dcfce7;
-      color: #166534;
-      font-weight: bold;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(34,197,94,0.12);
+      color: #bbf7d0;
+      border: 1px solid rgba(34,197,94,0.28);
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .support-item {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(2,6,23,0.5);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .support-item span {
+      display: block;
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .support-item strong,
+    .support-item a {
+      color: white;
+      text-decoration: none;
+      font-size: 17px;
     }
 
     footer {
-      background: #111827;
-      color: #d1d5db;
-      padding: 30px 8%;
-      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 34px 7%;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .toast {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      background: rgba(15,23,42,0.92);
+      color: white;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(249,115,22,0.32);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+      transform: translateY(120px);
+      opacity: 0;
+      transition: 0.28s;
+      z-index: 50;
+      font-weight: 800;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroCard {
+      from { opacity: 0; transform: translateX(34px) scale(0.98); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+      }
+
+      .products,
+      .features,
+      .support-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 700px) {
       header {
-        flex-direction: column;
+        align-items: flex-start;
         gap: 14px;
+        flex-direction: column;
       }
 
-      nav a {
-        margin: 0 8px;
+      nav {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
       }
 
-      .hero h1 {
-        font-size: 38px;
+      .hero {
+        padding: 62px 6% 50px;
+      }
+
+      section {
+        padding: 58px 6%;
+      }
+
+      .disc-visual {
+        min-height: 320px;
+      }
+
+      .disc {
+        width: 190px;
+        height: 190px;
+      }
+
+      .products,
+      .features,
+      .support-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-bottom {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      footer {
+        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
+  <div class="noise"></div>
+
   <header>
-    <div class="logo">PowerDisk Shop</div>
+    <div class="logo">
+      <div class="logo-badge">🥏</div>
+      <span>PowerDisk Shop</span>
+    </div>
     <nav>
       <a href="#products">Produkty</a>
-      <a href="#cart">Košík</a>
-      <a href="#checkout">Objednávka</a>
+      <a href="#why">Výhody</a>
+      <a href="#cart" class="cart-pill">Košík <span id="cartCount">0</span></a>
+      <a href="#support">Support</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <h1>Throw Further. Train Smarter.</h1>
-      <p>Demo e-shop pre diskárov, atlétov a tréningové vybavenie.</p>
-      <button onclick="scrollToProducts()">Pozrieť produkty</button>
+      <div>
+        <div class="eyebrow">⚡ Premium discus gear for athletes</div>
+        <h1>Throw Further. <span>Train Smarter.</span></h1>
+        <p>Moderný demo e-shop pre diskárske vybavenie. Objednávky sa ukladajú do Google Sheets a statusy vieš posielať zákazníkom automaticky e-mailom.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#products">Pozrieť produkty →</a>
+          <a class="btn btn-secondary" href="#support">Kontaktovať podporu</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="disc-visual">
+          <div class="stat-card stat-one">
+            <strong>3</strong>
+            <span>Premium products</span>
+          </div>
+          <div class="disc"></div>
+          <div class="stat-card stat-two">
+            <strong>24h</strong>
+            <span>Order processing</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="products">
-      <h2 class="section-title">Naše produkty</h2>
+      <div class="section-head">
+        <h2 class="section-title">Vyber si vybavenie</h2>
+        <p class="section-subtitle">Fake produkty, reálny objednávkový systém. Ideálne ako ukážka automatizácie pre e-shopy a malé firmy.</p>
+      </div>
+
       <div class="products">
         <div class="product">
-          <div class="product-icon">🥏</div>
+          <div class="product-image">🥏</div>
           <h3>Competition Disc Pro</h3>
-          <p>Profesionálny disk určený na súťažné hody a pokročilý tréning.</p>
-          <div class="price">79 €</div>
-          <button onclick="addToCart('Competition Disc Pro', 79)">Pridať do košíka</button>
+          <p>Profesionálny disk pre súťažné hody, stabilný let a maximálnu kontrolu v kruhu.</p>
+          <div class="product-bottom">
+            <div class="price">79 €</div>
+            <button class="btn btn-primary" onclick="addToCart('Competition Disc Pro', 79)">Pridať</button>
+          </div>
         </div>
 
         <div class="product">
-          <div class="product-icon">🏋️</div>
+          <div class="product-image">🏋️</div>
           <h3>Training Disc Basic</h3>
-          <p>Tréningový disk pre techniku, objemové hody a každodenný tréning.</p>
-          <div class="price">49 €</div>
-          <button onclick="addToCart('Training Disc Basic', 49)">Pridať do košíka</button>
+          <p>Tréningový disk pre techniku, objemové hody a každodenný tréningový progres.</p>
+          <div class="product-bottom">
+            <div class="price">49 €</div>
+            <button class="btn btn-primary" onclick="addToCart('Training Disc Basic', 49)">Pridať</button>
+          </div>
         </div>
 
         <div class="product">
-          <div class="product-icon">👕</div>
+          <div class="product-image">👕</div>
           <h3>ThrowMaster Shirt</h3>
-          <p>Ľahké športové tričko pre tréning, rozcvičku aj preteky.</p>
-          <div class="price">29 €</div>
-          <button onclick="addToCart('ThrowMaster Shirt', 29)">Pridať do košíka</button>
+          <p>Ľahké športové tričko pre tréning, rozcvičku, sústredenia aj pretekový deň.</p>
+          <div class="product-bottom">
+            <div class="price">29 €</div>
+            <button class="btn btn-primary" onclick="addToCart('ThrowMaster Shirt', 29)">Pridať</button>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="section-head">
+        <h2 class="section-title">Prečo PowerDisk?</h2>
+        <p class="section-subtitle">Stránka je postavená tak, aby pôsobila ako reálny e-shop a zároveň ukazovala automatizačný systém v pozadí.</p>
+      </div>
+      <div class="features">
+        <div class="feature"><strong>Rýchly checkout</strong>Jednoduchá objednávka bez zbytočných krokov.</div>
+        <div class="feature"><strong>Order tracking</strong>Statusy objednávok cez Google Sheets.</div>
+        <div class="feature"><strong>Email updates</strong>Automatické maily pri zmene stavu.</div>
+        <div class="feature"><strong>Business demo</strong>Ukážka služby pre budúcich klientov.</div>
       </div>
     </section>
 
     <section id="cart">
-      <h2 class="section-title">Košík</h2>
+      <div class="section-head">
+        <h2 class="section-title">Košík</h2>
+        <p class="section-subtitle">Tu vidíš vybrané produkty pred dokončením objednávky.</p>
+      </div>
       <div class="cart-box">
         <div id="cartItems">Košík je zatiaľ prázdny.</div>
         <div class="cart-total" id="cartTotal">Spolu: 0 €</div>
+        <div style="margin-top: 22px; text-align: right;">
+          <a class="btn btn-secondary" href="#checkout">Pokračovať k objednávke</a>
+        </div>
       </div>
     </section>
 
     <section id="checkout">
-      <h2 class="section-title">Dokončiť objednávku</h2>
+      <div class="section-head">
+        <h2 class="section-title">Dokončiť objednávku</h2>
+        <p class="section-subtitle">Objednávka sa odošle do tvojej Google Sheets tabuľky cez existujúci Apps Script endpoint.</p>
+      </div>
       <div class="checkout">
-        <p>Vyplň údaje. Toto je zatiaľ demo objednávka bez reálnej platby.</p>
         <form id="orderForm">
-          <input type="text" id="name" placeholder="Meno a priezvisko" required />
-          <input type="email" id="email" placeholder="E-mail" required />
+          <div class="form-grid">
+            <input type="text" id="name" placeholder="Meno a priezvisko" required />
+            <input type="email" id="email" placeholder="E-mail" required />
+          </div>
           <input type="text" id="address" placeholder="Adresa doručenia" required />
           <textarea id="note" placeholder="Poznámka k objednávke"></textarea>
-          <button type="submit">Odoslať objednávku</button>
+          <button class="btn btn-primary" type="submit">Odoslať objednávku</button>
         </form>
         <div class="success" id="successMessage"></div>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="section-head">
+        <h2 class="section-title">Zákaznícka podpora</h2>
+        <p class="section-subtitle">Profesionálna support sekcia, aby stránka pôsobila ako reálna firma.</p>
+      </div>
+      <div class="support-card">
+        <h3 style="font-size: 26px; margin-bottom: 10px;">Need help with your order?</h3>
+        <p style="color: #a8b4c6; line-height: 1.7;">Náš tím je pripravený pomôcť s objednávkami, doručením, produktmi aj reklamáciami.</p>
+        <div class="support-grid">
+          <div class="support-item">
+            <span>Email</span>
+            <a href="mailto:support@powerdiskshop.com">support@powerdiskshop.com</a>
+          </div>
+          <div class="support-item">
+            <span>Telefón</span>
+            <strong>+421 800 456 789</strong>
+          </div>
+          <div class="support-item">
+            <span>Pracovný čas</span>
+            <strong>Mon – Fri, 8:00 – 18:00 CET</strong>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 PowerDisk Shop — demo e-commerce automation project</p>
+    <p>© 2026 PowerDisk Shop. All rights reserved.</p>
+    <p>Business ID: PD-2026-45821 · VAT ID: SK2026458210</p>
   </footer>
+
+  <div class="toast" id="toast">Produkt bol pridaný do košíka.</div>
 
   <script>
     const cart = [];
 
-    function scrollToProducts() {
-      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    function showToast(text) {
+      const toast = document.getElementById('toast');
+      toast.textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
     }
 
     function addToCart(productName, price) {
       cart.push({ name: productName, price: price });
       renderCart();
-      document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
+      showToast(productName + ' bol pridaný do košíka.');
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+      showToast('Produkt bol odstránený z košíka.');
     }
 
     function renderCart() {
       const cartItems = document.getElementById('cartItems');
       const cartTotal = document.getElementById('cartTotal');
+      const cartCount = document.getElementById('cartCount');
+      cartCount.textContent = cart.length;
 
       if (cart.length === 0) {
         cartItems.textContent = 'Košík je zatiaľ prázdny.';
@@ -306,7 +797,7 @@
         total += item.price;
         const row = document.createElement('div');
         row.className = 'cart-item';
-        row.innerHTML = `<span>${index + 1}. ${item.name}</span><strong>${item.price} €</strong>`;
+        row.innerHTML = `<span>${index + 1}. ${item.name}</span><div><strong>${item.price} €</strong> <button onclick="removeFromCart(${index})">Odstrániť</button></div>`;
         cartItems.appendChild(row);
       });
 
@@ -340,7 +831,7 @@
       const scriptUrl = 'https://script.google.com/macros/s/AKfycby2Rweg_ZvgWvOwfa1YKZkbfYL0A4uJdz153NKjNmE69Rvgpu_GveGMsSXFF9zNAm-W/exec';
 
       try {
-        const response = await fetch(scriptUrl, {
+        await fetch(scriptUrl, {
           method: 'POST',
           mode: 'no-cors',
           headers: {
@@ -350,11 +841,12 @@
         });
 
         document.getElementById('successMessage').style.display = 'block';
-        document.getElementById('successMessage').innerHTML = `Objednávka bola odoslaná!<br>Skontroluj Google Sheets tabuľku.`;
+        document.getElementById('successMessage').innerHTML = `Objednávka bola úspešne odoslaná!<br>Skontroluj Google Sheets tabuľku a zmeň status pre odoslanie e-mailu zákazníkovi.`;
 
         this.reset();
         cart.length = 0;
         renderCart();
+        showToast('Objednávka bola odoslaná.');
       } catch (error) {
         console.error('Chyba pri odosielaní objednávky:', error);
         alert('Objednávku sa nepodarilo odoslať. Skontroluj nastavenia Google Apps Script.');
@@ -363,3 +855,4 @@
   </script>
 </body>
 </html>
+
