@@ -17,7 +17,7 @@
     }
 
     body {
-      background: #070b13;
+      background: #020817;
       color: #f8fafc;
       overflow-x: hidden;
     }
@@ -27,9 +27,9 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(circle at 20% 20%, rgba(249, 115, 22, 0.18), transparent 30%),
-        radial-gradient(circle at 80% 10%, rgba(59, 130, 246, 0.14), transparent 28%),
-        radial-gradient(circle at 50% 90%, rgba(34, 197, 94, 0.08), transparent 28%);
+        radial-gradient(circle at 18% 18%, rgba(37, 99, 235, 0.22), transparent 28%),
+        radial-gradient(circle at 82% 12%, rgba(14, 165, 233, 0.16), transparent 30%),
+        radial-gradient(circle at 50% 92%, rgba(30, 64, 175, 0.18), transparent 32%);
       pointer-events: none;
       z-index: -2;
     }
@@ -37,8 +37,8 @@
     .noise {
       position: fixed;
       inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 44px 44px;
+      background-image: linear-gradient(rgba(255,255,255,0.023) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.023) 1px, transparent 1px);
+      background-size: 46px 46px;
       opacity: 0.35;
       z-index: -1;
       pointer-events: none;
@@ -48,9 +48,9 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(16px);
-      background: rgba(7, 11, 19, 0.78);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(18px);
+      background: rgba(2, 8, 23, 0.82);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
       padding: 18px 7%;
       display: flex;
       justify-content: space-between;
@@ -62,18 +62,18 @@
       align-items: center;
       gap: 10px;
       font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -0.4px;
+      font-weight: 950;
+      letter-spacing: -0.5px;
     }
 
     .logo-badge {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 14px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, #f97316, #fb923c);
-      box-shadow: 0 12px 30px rgba(249, 115, 22, 0.28);
+      background: linear-gradient(135deg, #1d4ed8, #38bdf8);
+      box-shadow: 0 14px 34px rgba(37, 99, 235, 0.35);
     }
 
     nav {
@@ -87,20 +87,20 @@
       text-decoration: none;
       padding: 10px 13px;
       border-radius: 999px;
-      font-weight: 700;
+      font-weight: 750;
       font-size: 14px;
       transition: 0.25s;
     }
 
     nav a:hover {
-      background: rgba(255,255,255,0.08);
+      background: rgba(59, 130, 246, 0.16);
       color: white;
     }
 
     .cart-pill {
-      background: rgba(249, 115, 22, 0.16);
-      color: #fed7aa;
-      border: 1px solid rgba(249, 115, 22, 0.3);
+      background: rgba(37, 99, 235, 0.18);
+      color: #bfdbfe;
+      border: 1px solid rgba(96, 165, 250, 0.32);
     }
 
     .hero {
@@ -118,10 +118,10 @@
       gap: 8px;
       padding: 9px 14px;
       border-radius: 999px;
-      background: rgba(249, 115, 22, 0.13);
-      color: #fed7aa;
-      border: 1px solid rgba(249, 115, 22, 0.25);
-      font-weight: 800;
+      background: rgba(37, 99, 235, 0.16);
+      color: #bfdbfe;
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      font-weight: 850;
       margin-bottom: 22px;
       animation: floatIn 0.7s ease both;
     }
@@ -135,7 +135,7 @@
     }
 
     .hero h1 span {
-      background: linear-gradient(135deg, #f97316, #facc15);
+      background: linear-gradient(135deg, #60a5fa, #38bdf8, #dbeafe);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -173,24 +173,31 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #f97316, #fb923c);
+      background: linear-gradient(135deg, #1d4ed8, #2563eb, #38bdf8);
       color: white;
-      box-shadow: 0 18px 44px rgba(249, 115, 22, 0.32);
+      box-shadow: 0 18px 44px rgba(37, 99, 235, 0.34);
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover:not(:disabled) {
       transform: translateY(-3px);
-      box-shadow: 0 24px 54px rgba(249, 115, 22, 0.42);
+      box-shadow: 0 24px 54px rgba(37, 99, 235, 0.44);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.58;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.08);
+      background: rgba(15, 23, 42, 0.76);
       color: white;
-      border: 1px solid rgba(255,255,255,0.14);
+      border: 1px solid rgba(148, 163, 184, 0.2);
     }
 
     .btn-secondary:hover {
-      background: rgba(255,255,255,0.14);
+      background: rgba(30, 41, 59, 0.9);
       transform: translateY(-3px);
     }
 
@@ -198,9 +205,9 @@
       position: relative;
       border-radius: 34px;
       padding: 28px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.055));
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 30px 90px rgba(0,0,0,0.32);
+      background: linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.58));
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      box-shadow: 0 30px 90px rgba(0,0,0,0.36);
       overflow: hidden;
       animation: heroCard 1s ease both;
     }
@@ -208,11 +215,11 @@
     .hero-card::before {
       content: "";
       position: absolute;
-      width: 260px;
-      height: 260px;
+      width: 270px;
+      height: 270px;
       border-radius: 999px;
-      background: rgba(249, 115, 22, 0.25);
-      filter: blur(50px);
+      background: rgba(37, 99, 235, 0.28);
+      filter: blur(55px);
       top: -90px;
       right: -70px;
     }
@@ -229,19 +236,19 @@
       height: 260px;
       border-radius: 50%;
       background:
-        radial-gradient(circle at 50% 50%, #111827 0 20%, #fb923c 21% 29%, #111827 30% 41%, #f97316 42% 58%, #fed7aa 59% 62%, #111827 63% 100%);
-      box-shadow: 0 0 0 18px rgba(255,255,255,0.04), 0 40px 80px rgba(249,115,22,0.24);
-      animation: spin 12s linear infinite;
+        radial-gradient(circle at 50% 50%, #020817 0 18%, #60a5fa 19% 28%, #0f172a 29% 41%, #2563eb 42% 58%, #bae6fd 59% 62%, #020817 63% 100%);
+      box-shadow: 0 0 0 18px rgba(255,255,255,0.035), 0 40px 80px rgba(37,99,235,0.24);
+      animation: spin 14s linear infinite;
     }
 
     .stat-card {
       position: absolute;
       padding: 16px 18px;
       border-radius: 20px;
-      background: rgba(2, 6, 23, 0.72);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(2, 8, 23, 0.76);
+      border: 1px solid rgba(148, 163, 184, 0.16);
       backdrop-filter: blur(14px);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.24);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.26);
     }
 
     .stat-card strong {
@@ -253,7 +260,7 @@
     .stat-card span {
       color: #94a3b8;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 750;
     }
 
     .stat-one { top: 34px; left: 18px; }
@@ -289,32 +296,133 @@
 
     .product {
       position: relative;
-      background: linear-gradient(180deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
-      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.56));
+      border: 1px solid rgba(148, 163, 184, 0.16);
       border-radius: 28px;
       padding: 24px;
       overflow: hidden;
       transition: 0.28s;
-      box-shadow: 0 20px 55px rgba(0,0,0,0.22);
+      box-shadow: 0 20px 55px rgba(0,0,0,0.24);
     }
 
     .product:hover {
       transform: translateY(-8px);
-      border-color: rgba(249,115,22,0.45);
-      box-shadow: 0 28px 70px rgba(249,115,22,0.13);
+      border-color: rgba(96, 165, 250, 0.48);
+      box-shadow: 0 28px 70px rgba(37,99,235,0.18);
     }
 
     .product-image {
-      height: 210px;
+      position: relative;
+      height: 220px;
       border-radius: 24px;
       display: grid;
       place-items: center;
       margin-bottom: 22px;
       background:
-        radial-gradient(circle at 50% 35%, rgba(249,115,22,0.45), transparent 34%),
-        linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035));
-      border: 1px solid rgba(255,255,255,0.1);
-      font-size: 72px;
+        radial-gradient(circle at 50% 35%, rgba(59,130,246,0.34), transparent 38%),
+        linear-gradient(135deg, rgba(15,23,42,0.95), rgba(30,41,59,0.78));
+      border: 1px solid rgba(148,163,184,0.14);
+      overflow: hidden;
+    }
+
+    .product-image::after {
+      content: "";
+      position: absolute;
+      inset: auto 18px 16px;
+      height: 14px;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.42), transparent 70%);
+      filter: blur(2px);
+    }
+
+    .real-disc {
+      width: 138px;
+      height: 138px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,0.7), transparent 9%),
+        radial-gradient(circle at 50% 50%, #0f172a 0 18%, #93c5fd 19% 23%, #1d4ed8 24% 47%, #dbeafe 48% 52%, #1e3a8a 53% 100%);
+      border: 4px solid #bfdbfe;
+      box-shadow: inset -18px -22px 36px rgba(2,8,23,0.42), 0 30px 42px rgba(37,99,235,0.22);
+      transform: rotate(-18deg);
+      z-index: 1;
+    }
+
+    .training-disc {
+      width: 150px;
+      height: 150px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 38% 28%, rgba(255,255,255,0.72), transparent 10%),
+        radial-gradient(circle at 50% 50%, #e2e8f0 0 16%, #64748b 17% 25%, #0f172a 26% 45%, #60a5fa 46% 51%, #1e293b 52% 100%);
+      border: 5px solid #94a3b8;
+      box-shadow: inset -16px -22px 36px rgba(0,0,0,0.45), 0 30px 42px rgba(15,23,42,0.42);
+      transform: rotate(14deg);
+      z-index: 1;
+    }
+
+    .shirt {
+      width: 150px;
+      height: 142px;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 30px 24px rgba(0,0,0,0.34));
+    }
+
+    .shirt::before {
+      content: "";
+      position: absolute;
+      inset: 26px 28px 0;
+      background: linear-gradient(135deg, #1d4ed8, #0f172a 70%);
+      border-radius: 18px 18px 28px 28px;
+      border: 2px solid rgba(191,219,254,0.7);
+    }
+
+    .shirt::after {
+      content: "PD";
+      position: absolute;
+      top: 63px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #dbeafe;
+      font-size: 26px;
+      font-weight: 950;
+      letter-spacing: -1px;
+    }
+
+    .sleeve-left,
+    .sleeve-right {
+      position: absolute;
+      width: 54px;
+      height: 58px;
+      top: 28px;
+      background: #1e3a8a;
+      border: 2px solid rgba(191,219,254,0.6);
+      z-index: -1;
+    }
+
+    .sleeve-left {
+      left: 6px;
+      border-radius: 18px 0 18px 18px;
+      transform: rotate(24deg);
+    }
+
+    .sleeve-right {
+      right: 6px;
+      border-radius: 0 18px 18px 18px;
+      transform: rotate(-24deg);
+    }
+
+    .collar {
+      position: absolute;
+      top: 28px;
+      left: 50%;
+      width: 42px;
+      height: 26px;
+      transform: translateX(-50%);
+      background: #020817;
+      border-radius: 0 0 22px 22px;
+      border: 2px solid rgba(191,219,254,0.55);
+      z-index: 2;
     }
 
     .product h3 {
@@ -339,7 +447,7 @@
     .price {
       font-size: 30px;
       font-weight: 950;
-      color: #fed7aa;
+      color: #bfdbfe;
     }
 
     .features {
@@ -350,8 +458,8 @@
     }
 
     .feature {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(15, 23, 42, 0.68);
+      border: 1px solid rgba(148, 163, 184, 0.14);
       border-radius: 24px;
       padding: 22px;
       color: #cbd5e1;
@@ -369,11 +477,11 @@
     .support-card {
       max-width: 920px;
       margin: auto;
-      background: linear-gradient(180deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
-      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.58));
+      border: 1px solid rgba(148, 163, 184, 0.16);
       padding: 30px;
       border-radius: 30px;
-      box-shadow: 0 24px 70px rgba(0,0,0,0.25);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.27);
     }
 
     .cart-item {
@@ -382,7 +490,7 @@
       align-items: center;
       gap: 18px;
       padding: 16px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.09);
+      border-bottom: 1px solid rgba(148,163,184,0.12);
       color: #dbeafe;
     }
 
@@ -420,9 +528,9 @@
     textarea {
       width: 100%;
       padding: 16px 17px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(148,163,184,0.16);
       border-radius: 16px;
-      background: rgba(2,6,23,0.62);
+      background: rgba(2,8,23,0.68);
       color: white;
       font-size: 15px;
       outline: none;
@@ -431,8 +539,8 @@
 
     input:focus,
     textarea:focus {
-      border-color: rgba(249,115,22,0.75);
-      box-shadow: 0 0 0 4px rgba(249,115,22,0.13);
+      border-color: rgba(96,165,250,0.75);
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.16);
     }
 
     input::placeholder,
@@ -467,15 +575,15 @@
     .support-item {
       padding: 20px;
       border-radius: 22px;
-      background: rgba(2,6,23,0.5);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(2,8,23,0.52);
+      border: 1px solid rgba(148,163,184,0.12);
     }
 
     .support-item span {
       display: block;
       color: #94a3b8;
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 850;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 8px;
@@ -489,7 +597,7 @@
     }
 
     footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(148,163,184,0.12);
       padding: 34px 7%;
       color: #94a3b8;
       display: flex;
@@ -502,12 +610,12 @@
       position: fixed;
       right: 24px;
       bottom: 24px;
-      background: rgba(15,23,42,0.92);
+      background: rgba(15,23,42,0.94);
       color: white;
       padding: 16px 18px;
       border-radius: 18px;
-      border: 1px solid rgba(249,115,22,0.32);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+      border: 1px solid rgba(96,165,250,0.32);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       transform: translateY(120px);
       opacity: 0;
       transition: 0.28s;
@@ -600,7 +708,7 @@
 
   <header>
     <div class="logo">
-      <div class="logo-badge">🥏</div>
+      <div class="logo-badge">PD</div>
       <span>PowerDisk Shop</span>
     </div>
     <nav>
@@ -614,9 +722,9 @@
   <main>
     <section class="hero">
       <div>
-        <div class="eyebrow">⚡ Premium discus gear for athletes</div>
+        <div class="eyebrow">Premium discus gear for athletes</div>
         <h1>Throw Further. <span>Train Smarter.</span></h1>
-        <p>Najlepšie vybavenie na Slovensku!.</p>
+        <p>Špecializovaný obchod s vybavením pre diskárov, atlétov a trénerov, ktorí chcú trénovať efektívnejšie, hádzať ďalej a mať spoľahlivé produkty na každý tréning.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#products">Pozrieť produkty →</a>
           <a class="btn btn-secondary" href="#support">Kontaktovať podporu</a>
@@ -641,12 +749,12 @@
     <section id="products">
       <div class="section-head">
         <h2 class="section-title">Vyber si vybavenie</h2>
-        <p class="section-subtitle">Na všetko 2-ročná záruka!.</p>
+        <p class="section-subtitle">Prémiové vybavenie pre atlétov, diskárov a trénerov, ktorí chcú spoľahlivý tréningový aj súťažný výkon.</p>
       </div>
 
       <div class="products">
         <div class="product">
-          <div class="product-image">🥏</div>
+          <div class="product-image"><div class="real-disc"></div></div>
           <h3>Competition Disc Pro</h3>
           <p>Profesionálny disk pre súťažné hody, stabilný let a maximálnu kontrolu v kruhu.</p>
           <div class="product-bottom">
@@ -656,7 +764,7 @@
         </div>
 
         <div class="product">
-          <div class="product-image">🏋️</div>
+          <div class="product-image"><div class="training-disc"></div></div>
           <h3>Training Disc Basic</h3>
           <p>Tréningový disk pre techniku, objemové hody a každodenný tréningový progres.</p>
           <div class="product-bottom">
@@ -666,7 +774,9 @@
         </div>
 
         <div class="product">
-          <div class="product-image">👕</div>
+          <div class="product-image">
+            <div class="shirt"><div class="sleeve-left"></div><div class="sleeve-right"></div><div class="collar"></div></div>
+          </div>
           <h3>ThrowMaster Shirt</h3>
           <p>Ľahké športové tričko pre tréning, rozcvičku, sústredenia aj pretekový deň.</p>
           <div class="product-bottom">
@@ -680,20 +790,20 @@
     <section id="why">
       <div class="section-head">
         <h2 class="section-title">Prečo PowerDisk?</h2>
-        <p class="section-subtitle">Máme tu najlepší pomer cena-výkon!.</p>
+        <p class="section-subtitle">Jednoduchý nákup, rýchle spracovanie objednávky a zákaznícka podpora pripravená pomôcť s výberom aj doručením.</p>
       </div>
       <div class="features">
         <div class="feature"><strong>Rýchly checkout</strong>Jednoduchá objednávka bez zbytočných krokov.</div>
-        <div class="feature"><strong>Order tracking</strong>Statusy objednávok cez Google Sheets.</div>
-        <div class="feature"><strong>Email updates</strong>Automatické maily pri zmene stavu.</div>
-        <div class="feature"><strong>Business demo</strong>Ukážka služby pre budúcich klientov.</div>
+        <div class="feature"><strong>Order tracking</strong>Prehľadný stav objednávky od prijatia po doručenie.</div>
+        <div class="feature"><strong>Email updates</strong>Automatické informácie pri zmene stavu objednávky.</div>
+        <div class="feature"><strong>Support</strong>Podpora dostupná počas pracovných dní.</div>
       </div>
     </section>
 
     <section id="cart">
       <div class="section-head">
         <h2 class="section-title">Košík</h2>
-        <p class="section-subtitle">Tu vidíš vybrané produkty pred dokončením objednávky.</p>
+        <p class="section-subtitle">Skontroluj vybrané produkty pred dokončením objednávky.</p>
       </div>
       <div class="cart-box">
         <div id="cartItems">Košík je zatiaľ prázdny.</div>
@@ -707,7 +817,7 @@
     <section id="checkout">
       <div class="section-head">
         <h2 class="section-title">Dokončiť objednávku</h2>
-        <p class="section-subtitle">Tu prosím Vás doplňte všetky potrebné informácie.</p>
+        <p class="section-subtitle">Vyplň kontaktné údaje a odošli objednávku. Po prijatí objednávky ťa budeme informovať e-mailom.</p>
       </div>
       <div class="checkout">
         <form id="orderForm">
@@ -717,7 +827,7 @@
           </div>
           <input type="text" id="address" placeholder="Adresa doručenia" required />
           <textarea id="note" placeholder="Poznámka k objednávke"></textarea>
-          <button class="btn btn-primary" type="submit">Odoslať objednávku</button>
+          <button class="btn btn-primary" id="submitOrderBtn" type="submit">Odoslať objednávku</button>
         </form>
         <div class="success" id="successMessage"></div>
       </div>
@@ -726,7 +836,7 @@
     <section id="support">
       <div class="section-head">
         <h2 class="section-title">Zákaznícka podpora</h2>
-        <p class="section-subtitle">Vždy tu budeme pre Vás.</p>
+        <p class="section-subtitle">Pomôžeme ti s objednávkou, doručením, výberom produktov aj informáciami o dostupnosti.</p>
       </div>
       <div class="support-card">
         <h3 style="font-size: 26px; margin-bottom: 10px;">Need help with your order?</h3>
@@ -758,6 +868,7 @@
 
   <script>
     const cart = [];
+    let isSubmitting = false;
 
     function showToast(text) {
       const toast = document.getElementById('toast');
@@ -807,10 +918,19 @@
     document.getElementById('orderForm').addEventListener('submit', async function(event) {
       event.preventDefault();
 
+      if (isSubmitting) {
+        return;
+      }
+
       if (cart.length === 0) {
         alert('Najprv pridaj produkt do košíka.');
         return;
       }
+
+      const submitButton = document.getElementById('submitOrderBtn');
+      isSubmitting = true;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Odosielam objednávku...';
 
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
@@ -841,7 +961,7 @@
         });
 
         document.getElementById('successMessage').style.display = 'block';
-        document.getElementById('successMessage').innerHTML = `Objednávka bola úspešne odoslaná!<br>Ďakujeme za nákup!.`;
+        document.getElementById('successMessage').innerHTML = `Objednávka bola úspešne odoslaná!<br>Ďakujeme za nákup. O ďalšom stave objednávky ťa budeme informovať e-mailom.`;
 
         this.reset();
         cart.length = 0;
@@ -849,10 +969,14 @@
         showToast('Objednávka bola odoslaná.');
       } catch (error) {
         console.error('Chyba pri odosielaní objednávky:', error);
-        alert('Objednávku sa nepodarilo odoslať.');
+        alert('Objednávku sa nepodarilo odoslať. Skús to prosím znova.');
+        isSubmitting = false;
+        submitButton.disabled = false;
+        submitButton.textContent = 'Odoslať objednávku';
       }
     });
   </script>
 </body>
 </html>
+
 
