@@ -1190,8 +1190,40 @@ function renderReviews() {
     renderReviews();
     initScrollAnimations();
 
-    document.getElementById('reviewForm').addEventListener('submit', function(event) {
-      event.preventDefault();
+    document.getElementById('reviewForm').addEventListener('submit', async function(event) {
+  event.preventDefault();
+
+  const review = {
+    type: "review",
+    name: document.getElementById('reviewName').value,
+    role: document.getElementById('reviewRole').value,
+    rating: Number(document.getElementById('reviewRating').value),
+    review: document.getElementById('reviewText').value
+  };
+
+  try {
+    await fetch(scriptUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(review)
+    });
+
+    this.reset();
+
+    showToast('Recenzia bola odoslaná.');
+
+    setTimeout(() => {
+      loadStoreData();
+    }, 1200);
+
+  } catch (error) {
+    console.error('Chyba pri odosielaní recenzie:', error);
+    alert('Recenziu sa nepodarilo odoslať. Skús to prosím znova.');
+  }
+});
 
       const review = {
         name: document.getElementById('reviewName').value,
