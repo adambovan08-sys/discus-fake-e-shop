@@ -616,7 +616,7 @@
       <div>
         <div class="eyebrow">⚡ Premium discus gear for athletes</div>
         <h1>Throw Further. <span>Train Smarter.</span></h1>
-        <p>Moderný demo e-shop pre diskárske vybavenie. Objednávky sa ukladajú do Google Sheets a statusy vieš posielať zákazníkom automaticky e-mailom.</p>
+        <p>Najlepšie vybavenie na Slovensku!.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#products">Pozrieť produkty →</a>
           <a class="btn btn-secondary" href="#support">Kontaktovať podporu</a>
@@ -641,7 +641,7 @@
     <section id="products">
       <div class="section-head">
         <h2 class="section-title">Vyber si vybavenie</h2>
-        <p class="section-subtitle">Fake produkty, reálny objednávkový systém. Ideálne ako ukážka automatizácie pre e-shopy a malé firmy.</p>
+        <p class="section-subtitle">Na všetko 2-ročná záruka!.</p>
       </div>
 
       <div class="products">
@@ -680,7 +680,7 @@
     <section id="why">
       <div class="section-head">
         <h2 class="section-title">Prečo PowerDisk?</h2>
-        <p class="section-subtitle">Stránka je postavená tak, aby pôsobila ako reálny e-shop a zároveň ukazovala automatizačný systém v pozadí.</p>
+        <p class="section-subtitle">Máme tu najlepší pomer cena-výkon!.</p>
       </div>
       <div class="features">
         <div class="feature"><strong>Rýchly checkout</strong>Jednoduchá objednávka bez zbytočných krokov.</div>
@@ -707,7 +707,7 @@
     <section id="checkout">
       <div class="section-head">
         <h2 class="section-title">Dokončiť objednávku</h2>
-        <p class="section-subtitle">Objednávka sa odošle do tvojej Google Sheets tabuľky cez existujúci Apps Script endpoint.</p>
+        <p class="section-subtitle">Tu prosím Vás doplňte všetky potrebné informácie.</p>
       </div>
       <div class="checkout">
         <form id="orderForm">
@@ -726,7 +726,7 @@
     <section id="support">
       <div class="section-head">
         <h2 class="section-title">Zákaznícka podpora</h2>
-        <p class="section-subtitle">Profesionálna support sekcia, aby stránka pôsobila ako reálna firma.</p>
+        <p class="section-subtitle">Vždy tu budeme pre Vás.</p>
       </div>
       <div class="support-card">
         <h3 style="font-size: 26px; margin-bottom: 10px;">Need help with your order?</h3>
@@ -841,7 +841,7 @@
         });
 
         document.getElementById('successMessage').style.display = 'block';
-        document.getElementById('successMessage').innerHTML = `Objednávka bola úspešne odoslaná!<br>Skontroluj Google Sheets tabuľku a zmeň status pre odoslanie e-mailu zákazníkovi.`;
+        document.getElementById('successMessage').innerHTML = `Objednávka bola úspešne odoslaná!<br>Ďakujeme za nákup!.`;
 
         this.reset();
         cart.length = 0;
@@ -849,7 +849,7 @@
         showToast('Objednávka bola odoslaná.');
       } catch (error) {
         console.error('Chyba pri odosielaní objednávky:', error);
-        alert('Objednávku sa nepodarilo odoslať. Skontroluj nastavenia Google Apps Script.');
+        alert('Objednávku sa nepodarilo odoslať.');
       }
     });
   </script>
